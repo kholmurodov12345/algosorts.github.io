@@ -1,0 +1,57 @@
+body {
+    background-color: #ffffff;
+    font-family: Arial, Helvetica;
+}
+#sortcanvas {
+    background-color: rgb(255, 255, 255)
+}
+#visual, #timed, #logdiv {
+    background-color: white;
+    padding: 8px 20px;
+    width: 100%;
+    margin: 10px;
+}
+#newBtn{
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+#runBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#pauseBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#stepBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.text-interval{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bottom_margin{
+    margin-bottom: 10px;
+}
+.back-to-top {
+    background: none;
+    margin: 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /*width: 40px;*/
+    /*height: 40px;*/
+    z-index: 100;
+    display: none;
+    text-decoration: none;
+    color: #a94442;
+    background-color: #ffffff;
+}
+.back-to-top i {
+    font-size: 50px;
+}
+.ul_text{
+    font-size: 17px;
+    margin-bottom: 10px;
+}

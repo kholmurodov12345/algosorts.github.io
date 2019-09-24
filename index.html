@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Saralash Algoritmlari</title>
+    <link rel="favicon" href="favicon.ico">
+    <link href="lib/css/main.css" rel="stylesheet">
+    <link href="lib/css/font-awesome.css" rel="stylesheet">
+    <link href="lib/css/bootstrap.css" rel="stylesheet">
+    <link href="lib/css/bootstrap-select.css" rel="stylesheet">
+    <script src="lib/js/jquery-2.2.4.js"></script>
+    <script src="lib/js/bootstrap.js"></script>
+    <script src="lib/js/bootstrap-select.js"></script>
+    <script src="lib/js/main.js"></script>
+
+</head>
+<body onload="init()">
+<div class="container">
+    <div class="row bottom_margin">
+        <div class="col-xs-2">
+            <img src="img/saralash.png" width="250" height="150">
+        </div>
+        <div class="col-xs-offset-1 col-xs-7">
+            <h1 class="text-primary text-center"><strong>Saralash algoritmlarini o'rgatuvchi elektron qo'llanma</strong>
+            </h1>
+        </div>
+        <div class="col-xs-2">
+            <img src="img/001.png" width="200" height="150">
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div>
+            <div class="navbar-header" style="margin-left: 50px">
+                <!--<a class="navbar-brand" style="color: #000000" href="#">Saralash Algoritmlari</a>-->
+                <img src="img/favicon.png" width="50px" height="50px" style="margin-right: 50px">
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#BubbleSort" class="scrool_down">Bubble Sort</a></li>
+                <li><a href="#SelectionSort">Selection Sort</a></li>
+                <li><a href="#InsertionSort">Insertion Sort</a></li>
+                <li><a href="#MergeSort">Merge Sort</a></li>
+                <li><a href="#QuickSort">Quick Sort</a></li>
+                <li><a href="#Video">Video</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-xs-8">
+            <canvas id="sortcanvas" width=800 height=400></canvas>
+        </div>
+        <div class="col-xs-offset-1 col-xs-3">
+            <p><select id="sortSelect" class="selectpicker input-group-btn">
+                <option value="1">Bubble Sort</option>
+                <option value="2">Selection Sort</option>
+                <option value="3">Insertion Sort</option>
+                <option value="4">Merge Sort</option>
+                <option value="5">Quick Sort</option>
+            </select></p>
+            <p>
+                <button id="newBtn" class="btn btn-block btn-primary tab1">Yangi saralash</button>
+            </p>
+            <p><input type=checkbox id="fastCheckbox"><label for="fastCheckbox">&nbsp; Saralashni tezkorlik bilan
+                bajarish</label></p>
+
+            <p>
+                <button id="runBtn" class="btn btn-block btn-success">Boshlash</button>
+            </p>
+            <p>
+                <button id="pauseBtn" class="btn btn-block btn-success">To'xtatish</button>
+            </p>
+            <p>
+                <button id="stepBtn" class="btn btn-block btn-success">Bosqichma bosqich</button>
+            </p>
+            <p>
+                <button class="btn btn-block btn-warning">Dastur kodi</button>
+            </p>
+            <p>
+                <span style="color:white"><b>Taqqoslashlar:&nbsp;</b>200</span><br>
+                <b>Taqqoslashlar:</b>&nbsp;<span id="compCt">0</span>
+            </p>
+
+            <p class="text-interval">
+                <b>Almashishlar:</b>&nbsp;<span id="moveCt">0</span>
+            </p>
+        </div>
+    </div>
+    <div colspan="2" class="row">
+        <h4><span style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;X</span><span id="message1">&nbsp;</span></h4>
+
+        <p><span style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;X</span><span id="message2">&nbsp;</span></p>
+    </div>
+
+    <div id="logdiv">
+        <h2 class="text-center text-danger"><strong>Hisobotlar</strong></h2>
+        <h4><label><input type="checkbox" id="enablelog">&nbsp;Hisobot yuritishni yoqish</label></h4>
+    <pre id="log">
+   Algoritm      Hisoblagich    Massiv o'lchami   Taqqoslashlar   Almashishlar
+--------------   -----------    ---------------   --------------  ------------
+</pre>
+    </div>
+    <noscript><p>Kechirasiz, bu dastur ishlashi uchun JavaScript bo'lishi zarur.</p></noscript>
+    <div id="BubbleSort">
+        <h2 class="text-info text-center"><strong>Bubble Sort algoritmi haqida ma'lumot.</strong></h2>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <p class="text-success lead text-center">Algoritmining saralash jarayoni:</p>
+                <img class="center-block" src="img/bubble.gif"  width="300" height="180">
+                <br>
+                <table class="table table-striped">
+                    <tr class="row">
+                        <td class="text-danger">Sinf:</td>
+                        <td>Saralash algoritm</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Ma'lumotlar tuzilmasi:</td>
+                        <td>Massiv</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yomon vaqt:</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yaxshi vaqt:</td>
+                        <td>O(n)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">O'rtacha vaqt:</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Xotira sarfi:</td>
+                        <td>O(1) yordamchi</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-5">
+                <p class="text-success lead text-center">Algoritmining ishlashining vizual ko'rinishi:</p>
+                <img src="img/bubble_visual.gif" class="center-block" width="280" height="237">
+                <br>
+                <br>
+                <ul>
+                    <li class="ul_text">Agar ikki qo’shni element noto’g’ri tartibda joylashib qolgan bo’lsa, ularning o’rnini almashtiramiz.</li>
+                    <li class="ul_text">Umumiy n-1 marta jarayon bajariladi. Har safar ikkita qo’shni element taqqoslanadi.</li>
+                    <li class="ul_text">Elementlar o’z o’rinlariga pufakga o’xshab siljib boradi.
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <p class="text-success lead text-center">C++ da dastur kodi:</p>
+                <img src="img/bubble_code.png" class="center-block">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="SelectionSort">
+        <h2 class="text-info text-center"><strong>Selection Sort algoritmi haqida ma'lumot.</strong></h2>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <p class="text-success lead text-center">Algoritmining saralash jarayoni:</p>
+                <img class="center-block" src="img/selection.gif" width="300" height="180">
+                <br>
+                <table class="table table-striped">
+                    <tr class="row">
+                        <td class="text-danger">Sinf:</td>
+                        <td>Saralash algoritm</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Ma'lumotlar tuzilmasi:</td>
+                        <td>Massiv</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yomon vaqt:</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yaxshi vaqt:</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">O'rtacha vaqt:</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Xotira sarfi:</td>
+                        <td>O(n) umumiy O(1) yordamchi</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-5">
+                <p class="text-success lead text-center">Algoritmining ishlashining vizual ko'rinishi:</p>
+                <img src="img/selection_visual.gif" class="center-block" width="280" height="237">
+                <br>
+                <br>
+                <ul>
+                    <li class="ul_text">Har qadamda hali ko’rilmagan elementlar orasidan eng kattasini tanlaymiz.</li>
+                    <li class="ul_text">Umumiy n-1 marta jarayon bajariladi. Har safar yangi element katta element taqqoslanadi.</li>
+                    <li class="ul_text">Saralashda katta element aniqlangandan keyin eng oxirgi elementga almashtiriladi.
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <p class="text-success lead text-center">C++ da dastur kodi:</p>
+                <img src="img/selection_code.png" class="center-block">
+            </div>
+        </div>
+    </div>
+    <div id="InsertionSort">
+        <h2 class="text-info text-center"><strong>Insertion Sort algoritmi haqida ma'lumot.</strong></h2>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <p class="text-success lead text-center">Algoritmining saralash jarayoni:</p>
+                <img class="center-block" src="img/insertion.gif" width="300" height="180">
+                <br>
+                <table class="table table-striped">
+                    <tr class="row">
+                        <td class="text-danger">Sinf:</td>
+                        <td>Saralash algoritm</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Ma'lumotlar tuzilmasi:</td>
+                        <td>Massiv</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yomon vaqt:</td>
+                        <td>O(n<sup>2</sup>) taqqoslashlar, almashish</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yaxshi vaqt:</td>
+                        <td>O(n) taqqoslashlar, O(1) almashish</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">O'rtacha vaqt:</td>
+                        <td>O(n<sup>2</sup>) taqqoslashlar, almashish</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Xotira sarfi:</td>
+                        <td>O(n) umumiy O(1) yordamchi</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-5">
+                <p class="text-success lead text-center">Algoritmining ishlashining vizual ko'rinishi:</p>
+                <img src="img/insertion_visual.gif" class="center-block" width="280" height="237">
+                <ul>
+                    <li class="ul_text">Har qadamda hali ko’rilmagan element saralangan massivdan kerakli joyga joylashtiriladi.</li>
+                    <li class="ul_text">Umumiy n-1 marta jarayon bajariladi.</li>
+                    <li class="ul_text">Elementlar har qadamda o'z o'rniga joyshlashtiriladi</li>
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <p class="text-success lead text-center">C++ da dastur kodi:</p>
+                <img src="img/insertion_code.png" class="center-block">
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+    <div id="MergeSort">
+        <h2 class="text-info text-center"><strong>Merge Sort algoritmi haqida ma'lumot.</strong></h2>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <p class="text-success lead text-center">Algoritmining saralash jarayoni:</p>
+                <img class="center-block" src="img/merge.gif" width="300" height="180">
+                <br>
+                <table class="table table-striped">
+                    <tr class="row">
+                        <td class="text-danger">Sinf:</td>
+                        <td>Saralash algoritm</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Ma'lumotlar tuzilmasi:</td>
+                        <td>Massiv</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yomon vaqt:</td>
+                        <td>O(n log n)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yaxshi vaqt:</td>
+                        <td>O(n log n) odatiy</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">O'rtacha vaqt:</td>
+                        <td>O(n log n)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Xotira sarfi:</td>
+                        <td>O(n) yordamchi</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-5">
+                <p class="text-success lead text-center">Algoritmining ishlashining vizual ko'rinishi:</p>
+                <img src="img/merge_visual.gif" class="center-block" width="280" height="237">
+                <br>
+                <br>
+                <p class="ul_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bu algoritm Jon fon Neyman tamonidan 1946 yilda taklif qilingan.
+                    Jon Fon Neyman Vengriyalik matematika, kvant fizikasi, funksional
+                    analiz,  to’plamlar nazariyasi, ekonomika, informatika kabi fanlarga munosib hissa qo’shgan.
+                </p>
+                <ul>
+                    <li class="ul_text">Algoritmlarni qurishning asosiy metodlaridan biri.</li>
+                    <li class="ul_text">Murakkab masalani yechish uchun,  uni oddiyroq bo’laklarga ajratish kerak.</li>
+                    <li class="ul_text">Massivni ham huddi shunday saralash mumkin:
+                    <ul>
+                        <li>Uni ikkita bo’lakga ajratamiz.</li>
+                        <li>Bo’laklarni alohida saralaymiz.</li>
+                        <li>Saralangan massivlarni birlashtiramiz.</li>
+                    </ul></li>
+                    <li class="ul_text">Ikkita saralangan massiv berilgan. Ularni birlashtirib shunday massiv hosil qilish qilish kerakki, u yana saralangan bo’lsin.</li>
+                    <li class="ul_text">Xar safar hali ikki massivning hali ko’rilmagan qismlaridagi birinchi ikki elementni taqqoslaymiz. Ulardan kichigini olamiz.</li>
+
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <p class="text-success lead text-center">C++ da dastur kodi:</p>
+                <img src="img/merge_code.png" class="center-block">
+            </div>
+        </div>
+    </div>
+    <div id="QuickSort">
+        <h2 class="text-info text-center"><strong>Quick Sort algoritmi haqida ma'lumot.</strong></h2>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <p class="text-success lead text-center">Algoritmining saralash jarayoni:</p>
+                <img class="center-block" src="img/quicksort.gif" width="300" height="180">
+                <br>
+                <table class="table table-striped">
+                    <tr class="row">
+                        <td class="text-danger">Sinf:</td>
+                        <td>Saralash algoritm</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Ma'lumotlar tuzilmasi:</td>
+                        <td>Massiv</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yomon vaqt:</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Eng yaxshi vaqt:</td>
+                        <td>O(n log n) oddiy bo'laklash yoki O(n) 3 bo'lakka bo'laklash</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">O'rtacha vaqt:</td>
+                        <td>O(n log n)</td>
+                    </tr>
+                    <tr class="row">
+                        <td class="text-danger">Xotira sarfi:</td>
+                        <td>O(n) yordamchi, O(n log n) yordamchi</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-5">
+                <p class="text-success lead text-center">Algoritmining ishlashining vizual ko'rinishi:</p>
+                <img src="img/quicksort_visual.gif" class="center-block" width="280" height="237">
+                <p class="ul_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bu algoritm Charlz Hoar tamonidan 1964 yilda taklif qilingan.
+                    Charlz Hoar ingliz olimi, informatika va hisoblash texnikasi
+                    sohasida yetuk mutaxassis. Uning “Tezkor saralash” algoritmi saralash bo’yicha eng ommobop algoritm.
+                </p>
+                <ul>
+                    <li class="ul_text">Bu algoritm ham “Bo’lib tashla va hukmronlik qil” metodiga asoslanadi.</li>
+                    <li class="ul_text">Massivda bo’luvchi element X tanlanadi.</li>
+                    <li class="ul_text">Elementlarni shunday joylashtiramizki, dastlab X dan kichik yoki teng bo’lgan elementlar joylashsin, keyin undan katta bo’lgan elementlar joylashsin.</li>
+                    <li class="ul_text">Keyin ularni alohida saralaymiz.</li>
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <p class="text-success lead text-center">C++ da dastur kodi:</p>
+                <img src="img/quick_code.png" class="center-block">
+            </div>
+        </div>
+    </div>
+    <div id="Video">
+        <h2 class="text-info text-center"><strong>Saralash algoritmlari bo'yicha video lavhalar.</strong></h2>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <video width="500" height="400" controls>
+                    <source src="video/BubbleSortVideo.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-danger lead text-center">Bubble Sort Algoritmi</p>
+            </div>
+            <div class="col-xs-6 text-center">
+                <video width="500" height="400" controls>
+                    <source src="video/QuickSortVideo.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-danger lead text-center">Quick Sort Algoritmi</p>
+            </div>
+            <div class="col-xs-6 text-center">
+                <video width="500" height="400" controls>
+                    <source src="video/MergeSortVideo.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-danger lead text-center">Bubble Sort VS Quick Sort</p>
+            </div>
+            <div class="col-xs-6 text-center">
+                <video width="500" height="400" controls>
+                    <source src="video/BubbleVSQuick.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-danger lead text-center">Merge Sort Algoritmi</p>
+            </div>
+            <div class="col-xs-6 text-center">
+                <video width="500" height="400" controls>
+                <source src="video/MergeSortVSQuickSort.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-danger lead text-center">Merge Sort VS Quick Sort</p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" class="back-to-top" style="display:inline;">
+    <i class="fa fa-chevron-circle-up fa-4x" aria-hidden="true"></i>
+</a>
+
+</body>
+</html>
